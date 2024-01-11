@@ -1,22 +1,23 @@
 import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
-import config from './config.json' assert {type: "json"};
+import fs from 'fs';
+import dotenv from 'dotenv'
 
-const PORT = 5000;
+dotenv.config();
+const PORT = 8080;
 const app = express();
-const access_token = config.token;
+const access_token = process.env.ACCESS_TOKEN;
 const my_vk_id = 283385573;
 const vk_api = 'api.vk.com/method/';
 
 
 app.use(cors());
 const corsOptions = {
-    origin: ["http://localhost:3000","http://localhost:3001","https://localhost:3000","https://localhost:3001"],
+    origin: '*',
 };
 
-// This function runs if the http://localhost:5000/getData endpoint
-// is requested with a GET request
+// #region VKMyPhotoAPI
 app.get('/getMyPhotos', cors(corsOptions), async (req, res) => {
     const fetchOptions = {
         method: 'GET'
@@ -69,6 +70,78 @@ app.get('/getCatsPhotos', cors(corsOptions), async (req, res) => {
     res.json(jsonResponse);
 });
 
+// #endregion
+
+// #region EgyptianAPI
+
+app.get('/pharaohs/abydoscanon', (req, res) => {
+    const dataPath = './jsons/abydos.json';
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        res.send(JSON.parse(data));
+    });
+});
+
+app.get('/pharaohs/saqqaracanon', (req, res) => {
+    const dataPath = './jsons/saqqara.json';
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        res.send(JSON.parse(data));
+    });
+});
+
+app.get('/glyphs/all', (req, res) => {
+    const dataPath = './jsons/glyphs.json';
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        res.send(JSON.parse(data));
+    });
+});
+
+app.get('/categoriums/all', (req, res) => {
+    const dataPath = './jsons/categoriums.json';
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        res.send(JSON.parse(data));
+    });
+});
+
+app.get('/gods/all', (req, res) => {
+    const dataPath = './jsons/gods.json';
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        res.send(JSON.parse(data));
+    });
+});
+
+app.get('/phonograms/all', (req, res) => {
+    const dataPath = './jsons/phonograms.json';
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        res.send(JSON.parse(data));
+    });
+});
+
+// #endregion
+
 app.listen(PORT, () => {
-    console.log(`Example app listening at http://localhost:${PORT}`);
+    console.log(`Server listening at http://localhost:${PORT}`);
 });
