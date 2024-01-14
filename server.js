@@ -140,6 +140,17 @@ app.get('/phonograms/all', (req, res) => {
     });
 });
 
+app.get('/test', (req, res) => {
+    const dataPath = './jsons/phonograms.json';
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            throw err;
+        }
+
+        res.send(JSON.parse(data));
+    });
+});
+
 // #endregion
 
 app.listen(PORT, () => {
