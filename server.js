@@ -153,6 +153,81 @@ app.get('/test', (req, res) => {
 
 // #endregion
 
+// #region ArtistPhotos
+const raver_house_id = -150736684;
+
+app.get('/getCainPhotos', cors(corsOptions), async (req, res) => {
+    const fetchOptions = {
+        method: 'GET'
+    }
+    const frogsPhotosRequestEndpoint = `https://${vk_api}photos.get/?access_token=${access_token}&owner_id=${raver_house_id}&album_id=281266443&extended=1&count=300&fields=last_seen&v=5.95`;
+    const response = await fetch(frogsPhotosRequestEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+});
+
+app.get('/getCrim3sPhotos', cors(corsOptions), async (req, res) => {
+    const fetchOptions = {
+        method: 'GET'
+    }
+    const frogsPhotosRequestEndpoint = `https://${vk_api}photos.get/?access_token=${access_token}&owner_id=${raver_house_id}&album_id=259673260&extended=1&count=300&fields=last_seen&v=5.95`;
+    const response = await fetch(frogsPhotosRequestEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+});
+
+app.get('/getSummerOfHazePhotos', cors(corsOptions), async (req, res) => {
+    const fetchOptions = {
+        method: 'GET'
+    }
+    const frogsPhotosRequestEndpoint = `https://${vk_api}photos.get/?access_token=${access_token}&owner_id=${raver_house_id}&album_id=253592274&extended=1&count=300&fields=last_seen&v=5.95`;
+    const response = await fetch(frogsPhotosRequestEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+});
+
+app.get('/getRadostMojaPhotos', cors(corsOptions), async (req, res) => {
+    const fetchOptions = {
+        method: 'GET'
+    }
+    const frogsPhotosRequestEndpoint = `https://${vk_api}photos.get/?access_token=${access_token}&owner_id=${raver_house_id}&album_id=253144787&extended=1&count=300&fields=last_seen&v=5.95`;
+    const response = await fetch(frogsPhotosRequestEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+});
+
+app.get('/getIc3peakPhotos', cors(corsOptions), async (req, res) => {
+    const fetchOptions = {
+        method: 'GET'
+    }
+    const frogsPhotosRequestEndpoint = `https://${vk_api}photos.get/?access_token=${access_token}&owner_id=${raver_house_id}&album_id=252998550&extended=1&count=300&fields=last_seen&v=5.95`;
+    const response = await fetch(frogsPhotosRequestEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+});
+
+app.get('/getWhiteRingPhotos', cors(corsOptions), async (req, res) => {
+    const fetchOptions = {
+        method: 'GET'
+    }
+    const frogsPhotosRequestEndpoint = `https://${vk_api}photos.get/?access_token=${access_token}&owner_id=${raver_house_id}&album_id=245489648&extended=1&count=300&fields=last_seen&v=5.95`;
+    const response = await fetch(frogsPhotosRequestEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+});
+
+app.get('/getCrystalCastlesPhotos', cors(corsOptions), async (req, res) => {
+    const fetchOptions = {
+        method: 'GET'
+    }
+    const frogsPhotosRequestEndpoint = `https://${vk_api}photos.get/?access_token=${access_token}&owner_id=${raver_house_id}&album_id=247564875&extended=1&count=300&fields=last_seen&v=5.95`;
+    const response = await fetch(frogsPhotosRequestEndpoint, fetchOptions);
+    const jsonResponse = await response.json();
+    res.json(jsonResponse);
+});
+
+// #endregion
+
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`);
 });
